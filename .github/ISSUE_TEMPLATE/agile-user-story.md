@@ -12,3 +12,7 @@ assignees: ''
 
 ### Tasks
 - [ ]
+
+### Resources
+
+### Notes
