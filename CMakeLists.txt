@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 project(one-chart
-        VERSION 0.0.3
+        VERSION 0.0.4
         DESCRIPTION ""
         HOMEPAGE_URL "https://github.com/The-Three-Dudes/one-chart"
         LANGUAGES CXX C)
@@ -33,7 +33,14 @@ FetchContent_Declare(
         #https://github.com/ocornut/imgui/commit/a571933f8b28dd66f9d2e95d2ac88bd7cd46254e
 )
 
-FetchContent_MakeAvailable(doctest glfw imgui)
+FetchContent_Declare(
+        implot
+        GIT_REPOSITORY https://github.com/epezent/implot.git
+        GIT_TAG 626e391670a4018a365787e35ef4cf01cb68ee31
+        #https://github.com/epezent/implot/commit/626e391670a4018a365787e35ef4cf01cb68ee31
+)
+
+FetchContent_MakeAvailable(doctest glfw imgui implot)
 
 add_library(IMGUI_LIB STATIC
         ${imgui_SOURCE_DIR}/imgui.cpp
@@ -51,11 +58,22 @@ target_include_directories(IMGUI_LIB
         PUBLIC ${glfw_SOURCE_DIR}/include
         )
 
+add_library(IMPLOT_LIB STATIC
+        ${implot_SOURCE_DIR}/implot.cpp
+        ${implot_SOURCE_DIR}/implot_demo.cpp
+        ${implot_SOURCE_DIR}/implot_items.cpp
+        )
+
+target_include_directories(IMPLOT_LIB
+        PUBLIC ${implot_SOURCE_DIR}/
+        ${imgui_SOURCE_DIR}
+        )
+
 add_executable(one-chart main.cpp)
 
 add_dependencies(${PROJECT_NAME} glfw)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw IMGUI_LIB)
+target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw IMGUI_LIB IMPLOT_LIB)
 
 set(ENABLE_TESTING ON CACHE ON "Enable testing" FORCE)
 
@@ -86,4 +104,4 @@ macro(print_target_libraries)
     message(STATUS "print_target_libraries---------------------------------------}")
 endmacro()
 
-#print_all_variables()
+print_all_variables()
