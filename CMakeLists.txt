@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 project(one-chart
-        VERSION 0.0.2
+        VERSION 0.0.3
         DESCRIPTION ""
         HOMEPAGE_URL "https://github.com/The-Three-Dudes/one-chart"
         LANGUAGES CXX C)
@@ -12,15 +12,26 @@ include(FetchContent)
 FetchContent_Declare(
         doctest
         GIT_REPOSITORY https://github.com/doctest/doctest.git
-        GIT_TAG      b7c21ec5ceeadb4951b00396fc1e4642dd347e5f
-        #https://github.com/doctest/doctest/releases/download/v2.4.9/doctest.h
+        GIT_TAG b7c21ec5ceeadb4951b00396fc1e4642dd347e5f
+        #https://github.com/doctest/doctest/releases/tag/v2.4.9
 )
 
-FetchContent_MakeAvailable(doctest)
+set(GLFW_BUILD_DOCS FALSE)
+set(GLFW_BUILD_EXAMPLES FALSE)
+set(GLFW_BUILD_TESTS FALSE)
+FetchContent_Declare(
+	glfw
+	GIT_REPOSITORY https://github.com/glfw/glfw.git
+	GIT_TAG 7482de6071d21db77a7236155da44c172a7f6c9e
+	#https://github.com/glfw/glfw/releases/tag/3.3.8
+)
+FetchContent_MakeAvailable(doctest glfw)
 
 add_executable(one-chart main.cpp)
 
-target_link_libraries(one-chart doctest)
+add_dependencies(${PROJECT_NAME} glfw)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw)
 
 set(ENABLE_TESTING ON CACHE ON "Enable testing" FORCE)
 
