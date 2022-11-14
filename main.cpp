@@ -1,5 +1,6 @@
 #include <iostream>
 #include "include/doctest_proxy.h"
+#include "GLFW/glfw3.h"
 
 int basic_test() {
     return 4;
