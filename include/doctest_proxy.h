@@ -1,0 +1,8 @@
+#ifndef ONE_CHART_DOCTEST_PROXY_H
+#define ONE_CHART_DOCTEST_PROXY_H
+
+#define DOCTEST_CONFIG_IMPLEMENT
+/* #undef DOCTEST_CONFIG_DISABLE */
+#include "doctest/doctest.h"
+
+#endif //ONE_CHART_DOCTEST_PROXY_H
