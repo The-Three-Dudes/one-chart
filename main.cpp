@@ -1,6 +1,10 @@
 #include <iostream>
 #include "include/doctest_proxy.h"
 
+int basic_test() {
+    return 4;
+}
+
 int main(int argc, char **argv) {
 	doctest::Context context;
 
@@ -27,4 +31,7 @@ int main(int argc, char **argv) {
 	client_stuff_return_code = 0;
 
 	return res + client_stuff_return_code; // the result from doctest is propagated here as well
+}
+TEST_CASE("example doctest") {
+    CHECK(basic_test() == 4);
 }
