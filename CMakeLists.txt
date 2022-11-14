@@ -20,18 +20,42 @@ set(GLFW_BUILD_DOCS FALSE)
 set(GLFW_BUILD_EXAMPLES FALSE)
 set(GLFW_BUILD_TESTS FALSE)
 FetchContent_Declare(
-	glfw
-	GIT_REPOSITORY https://github.com/glfw/glfw.git
-	GIT_TAG 7482de6071d21db77a7236155da44c172a7f6c9e
-	#https://github.com/glfw/glfw/releases/tag/3.3.8
+        glfw
+        GIT_REPOSITORY https://github.com/glfw/glfw.git
+        GIT_TAG 7482de6071d21db77a7236155da44c172a7f6c9e
+        #https://github.com/glfw/glfw/releases/tag/3.3.8
 )
-FetchContent_MakeAvailable(doctest glfw)
+
+FetchContent_Declare(
+        imgui
+        GIT_REPOSITORY https://github.com/ocornut/imgui.git
+        GIT_TAG a571933f8b28dd66f9d2e95d2ac88bd7cd46254e
+        #https://github.com/ocornut/imgui/commit/a571933f8b28dd66f9d2e95d2ac88bd7cd46254e
+)
+
+FetchContent_MakeAvailable(doctest glfw imgui)
+
+add_library(IMGUI_LIB STATIC
+        ${imgui_SOURCE_DIR}/imgui.cpp
+        ${imgui_SOURCE_DIR}/imgui_demo.cpp
+        ${imgui_SOURCE_DIR}/imgui_draw.cpp
+        ${imgui_SOURCE_DIR}/imgui_tables.cpp
+        ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+        )
+
+target_include_directories(IMGUI_LIB
+        PUBLIC ${imgui_SOURCE_DIR}
+        PUBLIC ${imgui_SOURCE_DIR}/backends
+        PUBLIC ${glfw_SOURCE_DIR}/include
+        )
 
 add_executable(one-chart main.cpp)
 
 add_dependencies(${PROJECT_NAME} glfw)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw)
+target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw IMGUI_LIB)
 
 set(ENABLE_TESTING ON CACHE ON "Enable testing" FORCE)
 
