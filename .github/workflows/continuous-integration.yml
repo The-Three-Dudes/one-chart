@@ -3,7 +3,7 @@ name: continuous-integration
 on:
   push:
     branches:
-      - 'feature/**'
+      - 'feat/**'
   pull_request:
     branches:
       - 'main'
