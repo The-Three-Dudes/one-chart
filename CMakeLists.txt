@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+set(OPT_WARNINGS_AS_ERRORS_DEVELOPER_DEFAULT TRUE)
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -77,7 +79,7 @@ add_dependencies(${PROJECT_NAME} glfw)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw IMGUI_LIB IMPLOT_LIB)
 
-set(ENABLE_TESTING ON CACHE ON "Enable testing" FORCE)
+set(ENABLE_TESTING ON CACHE BOOL "Enable testing" FORCE)
 
 set(DOCTEST_CONFIG_DISABLE ON)
 if(ENABLE_TESTING)
@@ -106,4 +108,4 @@ macro(print_target_libraries)
     message(STATUS "print_target_libraries---------------------------------------}")
 endmacro()
 
-print_all_variables()
+#print_all_variables()
