@@ -5,4 +5,6 @@ project(one-chart
         HOMEPAGE_URL "https://github.com/The-Three-Dudes/one-chart"
         LANGUAGES CXX C)
 
+set(CMAKE_CXX_STANDARD 11)
+
 add_executable(one-chart main.cpp)
