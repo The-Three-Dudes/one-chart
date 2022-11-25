@@ -14,7 +14,19 @@ env:
   BUILD_TYPE: Release
 
 jobs:
+  clang-format:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: run clang-format
+      uses: jidicula/clang-format-action@v4.9.0
+      with:
+        clang-format-version: '11'
+
   build-and-test:
+    needs: clang-format
     strategy:
       fail-fast: false # prevents a failure from stopping other executions
       matrix:

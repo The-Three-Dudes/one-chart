@@ -5,4 +5,4 @@
 #cmakedefine DOCTEST_CONFIG_DISABLE
 #include "doctest/doctest.h"
 
-#endif //ONE_CHART_DOCTEST_PROXY_H
+#endif // ONE_CHART_DOCTEST_PROXY_H
