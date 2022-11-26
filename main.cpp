@@ -4,6 +4,7 @@
 #include "imgui_impl_opengl3.h"
 #include "implot.h"
 #include "include/doctest_proxy.h"
+#include "one_chart.h"
 #include <iostream>
 
 int basic_test() {
