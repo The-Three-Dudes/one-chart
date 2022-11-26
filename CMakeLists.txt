@@ -73,7 +73,13 @@ target_include_directories(IMPLOT_LIB
         ${imgui_SOURCE_DIR}
         )
 
-add_executable(one-chart main.cpp)
+set(PROJECT_SOURCES
+        main.cpp)
+
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+
+target_include_directories(${PROJECT_NAME}
+        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_dependencies(${PROJECT_NAME} glfw)
 

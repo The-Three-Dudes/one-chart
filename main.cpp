@@ -5,6 +5,7 @@
 #include "implot.h"
 #include "include/doctest_proxy.h"
 #include <iostream>
+#include "one_chart.h"
 
 int basic_test() {
     return 4;
