@@ -1,8 +1,3 @@
-#include "GLFW/glfw3.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include "implot.h"
 #include "include/doctest_proxy.h"
 #include "one_chart.h"
 #include <iostream>
@@ -11,7 +6,7 @@ int basic_test() {
     return 4;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     doctest::Context context;
 
     // !!! THIS IS JUST AN EXAMPLE SHOWING HOW DEFAULTS/OVERRIDES ARE SET !!!
@@ -38,7 +33,12 @@ int main(int argc, char **argv) {
     int client_stuff_return_code = 0;
     // your program - if the testing framework is integrated in your production
     // code
-    std::cout << "Hello, World!" << std::endl;
+    three_dudes::OneChart one_chart("One Chart", 640, 480);
+
+    while (one_chart.isActive()) {
+        one_chart.loop();
+    }
+
     client_stuff_return_code = 0;
 
     return res + client_stuff_return_code; // the result from doctest is
