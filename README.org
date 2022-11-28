@@ -4,7 +4,7 @@
 *One Chart* is an open-source and cross-platform stock charting and trading software development kit. It aims to handle the complexity and boilerplate code of building cross-platform GUI stock trading applications.
 
 ** About
-This SDK aims to enable anyone to build stock charting and trading applications. To achieve this, first, it strictly implements open-source libraries. And second, it provides access to the [[https://alpaca.markets/][Alpaca Markets]] API. Alpaca's goal is to provide anyone free access to financial markets. They offer commision-free stock trading and data to allow anyone to build their own trading applications. We aim to extend their goal by providing all the tools necessary to do so using C++, for it's power and speed. provider.
+This SDK aims to enable anyone to build stock charting and trading applications. To achieve this, first, it strictly implements open-source libraries. And second, it provides access to the [[https://alpaca.markets/][Alpaca Markets]] API. Alpaca's goal is to provide anyone free access to financial markets. They offer commision-free stock trading and data to allow anyone to build their own trading applications. We aim to extend their goal by providing all the tools necessary to do so using C++, for it's power and speed.
 
 #+HTML: <p> For more information about the design and use of One Chart, checkout the <a href="https://github.com/The-Three-Dudes/one-chart/wiki">wiki</a>.</p>
 ** Requirements
