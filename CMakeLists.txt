@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 project(one-chart
-        VERSION 0.0.4
+        VERSION 0.1.0
         DESCRIPTION ""
         HOMEPAGE_URL "https://github.com/The-Three-Dudes/one-chart"
         LANGUAGES CXX C)
@@ -31,6 +31,13 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
+        glad
+        GIT_REPOSITORY https://github.com/Dav1dde/glad
+        GIT_TAG v0.1.36
+        GIT_PROGRESS TRUE
+)
+
+FetchContent_Declare(
         imgui
         GIT_REPOSITORY https://github.com/ocornut/imgui.git
         GIT_TAG a571933f8b28dd66f9d2e95d2ac88bd7cd46254e
@@ -44,7 +51,7 @@ FetchContent_Declare(
         #https://github.com/epezent/implot/commit/626e391670a4018a365787e35ef4cf01cb68ee31
 )
 
-FetchContent_MakeAvailable(doctest glfw imgui implot)
+FetchContent_MakeAvailable(doctest glfw glad imgui implot)
 
 add_library(IMGUI_LIB STATIC
         ${imgui_SOURCE_DIR}/imgui.cpp
@@ -74,16 +81,19 @@ target_include_directories(IMPLOT_LIB
         )
 
 set(PROJECT_SOURCES
-        main.cpp)
+        main.cpp
+        src/one_chart.cpp
+        src/gui_context.cpp
+        src/gui_functions.cpp)
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 
 target_include_directories(${PROJECT_NAME}
         PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_dependencies(${PROJECT_NAME} glfw)
+add_dependencies(${PROJECT_NAME} glfw glad)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw IMGUI_LIB IMPLOT_LIB)
+target_link_libraries(${PROJECT_NAME} PRIVATE doctest glfw glad IMGUI_LIB IMPLOT_LIB)
 
 set(ENABLE_TESTING ON CACHE BOOL "Enable testing" FORCE)
 
