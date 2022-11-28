@@ -1,1 +1,24 @@
 #+html:<h1 align="center">One Chart</h1>
+#+HTML: <p align="center"><a href="https://github.com/The-Three-Dudes/one-chart/actions"><img src="https://img.shields.io/github/workflow/status/The-Three-Dudes/one-chart/continuous-integration?label=build&style=flat-square"></a> <a href="https://www.conventionalcommits.org/en/v1.0.0/"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?style=flat-square&logo=conventionalcommits&logoColor=white"></a> <a href="https://orgmode.org"><img src="https://img.shields.io/badge/Org-Document-%2377aa99?style=flat-square&logo=org&logoColor=white"></a> <a href="https://github.com/The-Three-Dudes/one-chart/blob/main/LICENSE"><img src="https://img.shields.io/github/license/The-Three-Dudes/one-chart?style=flat-square"></a></p>
+#+HTML: <p align="center"><img src="logo.png" height="350"></p>
+*One Chart* is an open-source and cross-platform stock charting and trading software development kit. It aims to handle the complexity and boilerplate code of building cross-platform GUI stock trading applications.
+
+** About
+This SDK aims to enable anyone to build stock charting and trading applications. To achieve this, first, it strictly implements open-source libraries. And second, it provides access to the [[https://alpaca.markets/][Alpaca Markets]] API. Alpaca's goal is to provide anyone free access to financial markets. They offer commision-free stock trading and data to allow anyone to build their own trading applications. We aim to extend their goal by providing all the tools necessary to do so using C++, for it's power and speed. provider.
+
+#+HTML: <p> For more information about the design and use of One Chart, checkout the <a href="https://github.com/The-Three-Dudes/one-chart/wiki">wiki</a>.</p>
+** Requirements
+- CMake 3.23+
+- C++11
+- On Linux using X11, xorg-dev package.
+** Quick Start
+#+begin_src
+git clone https://github.com/The-Three-Dudes/one-chart
+cd one-chart
+#+end_src
+- Then, build and run the CMake project using your IDE or CLI.
+** Compatibility
+Tested on:
+- Ubuntu 22.04.1
+- macOS 12.6.1
+- Windows 10

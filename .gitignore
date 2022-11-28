@@ -1,0 +1,6 @@
+/cmake-build-debug/
+build
+.idea
+cmake-build-*
+out
+.vs
